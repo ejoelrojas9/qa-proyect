@@ -1,7 +1,7 @@
 
 <div class="container bg-light">
   <div class="content-header mt-5 p-5">
-    <div><%= render '/shared/flash' %></div>
+    <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <%= link_to "Home", root_path %>
       <a href="<%= managers_path -%>" class="p-3" onclick=><i class="fa fa-ban fa-fw pull-right"></i>Managers List</a>

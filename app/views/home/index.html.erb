@@ -1,6 +1,6 @@
 <div class="container bg-light">
   <div class="content-header mt-5 p-5">
-  <div><%= render '/shared/flash' %></div>
+    <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <%= link_to "Manager List", managers_path %>
       <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
