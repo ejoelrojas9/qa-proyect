@@ -2,73 +2,11 @@
   <div class="content-header mt-5 p-5">
   <div><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
+      <%= link_to "Manager List", managers_path %>
       <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
     <% end %>
     <div class="header-section mt-3 p-3">
-      <h1>Access de information of the managers</h1>
-      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">New manager</button>
-    </div>
-    <div class="block full block-all-noboder table-responsive-form-control mt-5">
-      <table class="table data-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @managers.each do |manager| %>
-            <tr class="p-3">
-              <td>
-                <%= manager.id %>
-              </td>
-              <td>
-                <%= manager.name %>
-              </td>
-              <td>
-                <%= manager.email %>
-              </td>
-              <td><a href="<%= manager_path(id: manager.id)%>" class="btn btn-info">Details</a></td>
-            </tr>
-            <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<div id="modal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Manager Form</h2>
-        <button data-bs-dismiss="modal" class="btn-close"></button>
-      </div>
-      <div class="modal-body">
-        <%= form_for :manager, model: @manager do |f| -%>
-      <div class="alert alert-danger" style="display: none" id="record-errors"></div>
-      <div class="row">
-        <div class="row">
-          <div class="col-sm-6">
-            <td><%= f.label :first_name -%> *</td>
-            <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
-          </div>
-          <div class="col-sm-6">
-            <td></td>
-            <td></td>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer p-3">
-        <div class="container text-end">
-          <%= link_to "Close", managers_path, class: 'btn btn-secondary' %>
-          <%= f.submit "Submit", disable_with: 'Submiting...' %>
-        </div>
-      </div>
-    <% end %>
-      </div>
+      <h1>Quality Assurence Page  </h1>
     </div>
   </div>
 </div>

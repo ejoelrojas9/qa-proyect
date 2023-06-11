@@ -2,7 +2,8 @@
   <div class="content-header mt-5 p-5">
   <div><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
-      <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+      <a href="<%= root_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Home</a>
+      <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a>
     <% end %>
     <div class="header-section mt-3 p-3">
       <h1>Access de information of the managers</h1>
@@ -47,8 +48,9 @@
         <button data-bs-dismiss="modal" class="btn-close"></button>
       </div>
       <div class="modal-body">
+        <legend> <i class="bi bi-person-plus-fill"></i> New manager</legend>
         <%= form_for :manager, model: @manager do |f| -%>
-        <table class="table table-responsive">
+          <table class="table table-responsive">
             <tr class="mb-3">
               <td><%= f.label :first_name -%> *</td>
               <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
@@ -84,7 +86,7 @@
               <button type="submit" class="btn btn-outline-primary">Save changes</button>
             </div>
           </div>
-    <% end %>
+        <% end %>
       </div>
     </div>
   </div>
