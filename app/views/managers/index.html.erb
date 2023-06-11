@@ -48,25 +48,42 @@
       </div>
       <div class="modal-body">
         <%= form_for :manager, model: @manager do |f| -%>
-      <div class="alert alert-danger" style="display: none" id="record-errors"></div>
-      <div class="row">
-        <div class="row">
-          <div class="col-sm-6">
-            <td><%= f.label :first_name -%> *</td>
-            <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
+        <table class="table table-responsive">
+            <tr class="mb-3">
+              <td><%= f.label :first_name -%> *</td>
+              <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
+            </tr>
+            <tr class="mb-3">
+              <td><%= f.label :last_name -%> *</td>
+              <td><%= f.text_field :last_name, required: true, class: 'form-control' -%></td>
+            </tr>
+            <tr class="mb-3">
+              <td><%= f.label :email -%> *</td>
+              <td><%= f.text_field :email, required: true, class: 'form-control' -%></td>
+            </tr>
+            <tr class="mb-3">
+              <td><%= f.label :phone -%> *</td>
+              <td><%= f.text_field :phone, required: true, class: 'form-control' -%></td>
+            </tr>
+            <tr class="mb-3">
+              <td><%= f.label :city -%> *</td>
+              <td><%= f.text_field :city, required: true, class: 'form-control' -%></td>
+            </tr>
+            <tr class="mb-3">
+              <td><%= f.label :age -%> *</td>
+              <td><%= f.text_field :age, required: true, class: 'form-control' -%></td>
+            </tr>
+            <div>
+              <td><%= f.label :notes -%> *</td>
+              <td><%= f.text_area :notes, required: true, class: 'form-control' -%></td>
+            </div>
+          </table>
+          <div class="modal-footer p-3">
+            <div class="container text-end">
+              <button data-bs-dismiss="modal" class="btn btn-outline-danger">Close</button>
+              <button type="submit" class="btn btn-outline-primary">Save changes</button>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <td></td>
-            <td></td>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer p-3">
-        <div class="container text-end">
-          <%= link_to "Close", managers_path, class: 'btn btn-secondary' %>
-          <%= f.submit "Submit", disable_with: 'Submiting...' %>
-        </div>
-      </div>
     <% end %>
       </div>
     </div>
