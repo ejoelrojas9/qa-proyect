@@ -29,19 +29,19 @@ describe "Should success login" do
     $wait.until{@browser.find_element(css: '.modal-content').displayed?}
     expect(@browser.find_element(css: '.modal-content').text).to include("Manager Form")
     @browser.find_element(id: 'manager_first_name').click
-    @browser.find_element(id: 'manager_first_name').send_keys("Joel")
+    @browser.find_element(id: 'manager_first_name').send_keys($manager_first_name)
     @browser.find_element(id: 'manager_last_name').click
-    @browser.find_element(id: 'manager_last_name').send_keys("Rojas")
+    @browser.find_element(id: 'manager_last_name').send_keys($manager_last_name)
     @browser.find_element(id: 'manager_email').click
-    @browser.find_element(id: 'manager_email').send_keys("ejoelrojas9@gmail.com")
+    @browser.find_element(id: 'manager_email').send_keys($manager_email)
     @browser.find_element(id: 'manager_phone').click
-    @browser.find_element(id: 'manager_phone').send_keys("3216676200")
+    @browser.find_element(id: 'manager_phone').send_keys($manager_phone)
     @browser.find_element(id: 'manager_city').click
-    @browser.find_element(id: 'manager_city').send_keys("San Antonio")
+    @browser.find_element(id: 'manager_city').send_keys($manager_city)
     @browser.find_element(id: 'manager_age').click
-    @browser.find_element(id: 'manager_age').send_keys(44)
+    @browser.find_element(id: 'manager_age').send_keys($manager_age)
     @browser.find_element(id: 'manager_notes').click
-    @browser.find_element(id: 'manager_notes').send_keys("Notes")
+    @browser.find_element(id: 'manager_notes').send_keys($manager_notes)
     @browser.find_element(css: '.btn-outline-primary').click
     $wait.until{@browser.find_element(css: '.alert-alert h3:first-child').displayed?}
     expect(@browser.find_element(css: '.alert-alert h3:first-child').text).to include("Manager created")
@@ -54,21 +54,11 @@ describe "Should success login" do
     $wait.until{@browser.find_element(css: '.modal-content').displayed?}
     expect(@browser.find_element(css: '.modal-content').text).to include("Manager Form")
     @browser.find_element(id: 'manager_first_name').click
-    @browser.find_element(id: 'manager_first_name').send_keys(" Edited")
+    @browser.find_element(id: 'manager_first_name').clear
+    @browser.find_element(id: 'manager_first_name').send_keys($manager_first_name)
     @browser.find_element(id: 'manager_last_name').click
-    @browser.find_element(id: 'manager_last_name').send_keys(" Edited")
-    @browser.find_element(id: 'manager_email').click
-    @browser.find_element(id: 'manager_email').clear
-    @browser.find_element(id: 'manager_email').send_keys("edit_ejoelrojas9@gmail.com")
-    @browser.find_element(id: 'manager_phone').click
-    @browser.find_element(id: 'manager_phone').send_keys(" Edited")
-    @browser.find_element(id: 'manager_city').click
-    @browser.find_element(id: 'manager_city').send_keys(" Edited")
-    @browser.find_element(id: 'manager_age').click
-    @browser.find_element(id: 'manager_age').clear
-    @browser.find_element(id: 'manager_age').send_keys(24)
-    @browser.find_element(id: 'manager_notes').click
-    @browser.find_element(id: 'manager_notes').send_keys(" Edited")
+    @browser.find_element(id: 'manager_last_name').clear
+    @browser.find_element(id: 'manager_last_name').send_keys($manager_last_name)
     @browser.find_element(css: '.btn-outline-primary').click
     $wait.until{@browser.find_element(css: '.alert-alert h3:first-child').displayed?}
     expect(@browser.find_element(css: '.alert-alert h3:first-child').text).to include("Manager updated")

@@ -17,3 +17,12 @@ $fail_login_message ="Invalid Email or password."
 $forgot_password = "Forgot your password?"
 $message_instruction = "You will receive an email with instructions on how to reset your password in a few minutes."
 $access_managers_list_message = "Access de information of the managers"
+
+# Input data
+$manager_first_name = Faker::Name.first_name
+$manager_last_name = Faker::Name.last_name
+$manager_email = Faker::Internet.email
+$manager_phone = Faker::PhoneNumber.cell_phone
+$manager_city = Faker::Address.city
+$manager_age = Faker::Number.between(from: 20, to: 50)
+$manager_notes = Faker::Gender.binary_type
