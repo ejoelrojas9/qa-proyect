@@ -1,0 +1,30 @@
+<table class="table table-responsive">
+  <tr class="mb-3">
+    <td><%= f.label :first_name -%> *</td>
+    <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
+  </tr>
+  <tr class="mb-3">
+    <td><%= f.label :last_name -%> *</td>
+    <td><%= f.text_field :last_name, required: true, class: 'form-control' -%></td>
+  </tr>
+  <tr class="mb-3">
+    <td><%= f.label :email -%> *</td>
+    <td><%= f.text_field :email, required: true, class: 'form-control' -%></td>
+  </tr>
+  <tr class="mb-3">
+    <td><%= f.label :phone -%> *</td>
+    <td><%= f.text_field :phone, required: true, class: 'form-control' -%></td>
+  </tr>
+  <tr class="mb-3">
+    <td><%= f.label :city -%> *</td>
+    <td><%= f.text_field :city, required: true, class: 'form-control' -%></td>
+  </tr>
+  <tr class="mb-3">
+    <td><%= f.label :age -%> *</td>
+    <td><%= f.text_field :age, required: true, class: 'form-control' -%></td>
+  </tr>
+  <div>
+    <td><%= f.label :notes -%> *</td>
+    <td><%= f.text_area :notes, required: true, class: 'form-control' -%></td>
+  </div>
+</table>
