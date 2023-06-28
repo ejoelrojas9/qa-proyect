@@ -7,7 +7,7 @@ describe "Should success login" do
   before(:all) do
     puts "\n\e[1;34m\e[47m -Running managers list \e[m\n\n"
     @browser = Selenium::WebDriver.for :chrome
-    # @browser.manage.window.maximize
+    @browser.manage.window.maximize
     @browser.navigate.to ($url)
     @browser.find_element(id: 'admin_email').send_keys($email)
     @browser.find_element(id: 'admin_password').send_keys($password)

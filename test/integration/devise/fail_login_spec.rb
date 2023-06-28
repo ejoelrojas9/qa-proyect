@@ -2,12 +2,12 @@ require 'webdrivers/chromedriver'
 require 'byebug'
 require_relative ('../login_info.rb')
 
-describe "Given good credentials" do
+describe "Given wrong credentials" do
   it "should login" do
     puts "\n\e[1;34m\e[47m -Running fail login \e[m\n\n"
     # Open @browser
     @browser = Selenium::WebDriver.for :chrome
-    # @browser.manage.window.maximize
+    @browser.manage.window.maximize
     # Navigate to url
     @browser.navigate.to ($url)
     # Enter email
