@@ -22,7 +22,7 @@ describe "Should success login" do
     expect(@browser.find_element(css: '.header-section').text).to include("Quality Assurence Page")
     $wait.until{@browser.find_element(link_text: 'Manager List').displayed?}
     @browser.find_element(link_text: 'Manager List').click
-    wait.until{@browser.find_element(css: '.header-section').displayed?}
+    wait.until{@browser.find_element(css: 'button.btn-success').displayed?}
     @browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
     puts "Displayed Managers list"
     sleep(2)

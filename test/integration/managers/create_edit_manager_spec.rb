@@ -45,6 +45,8 @@ describe "Should success login" do
     @browser.find_element(css: '.btn-outline-primary').click
     $wait.until{@browser.find_element(css: '.alert-alert h3:first-child').displayed?}
     expect(@browser.find_element(css: '.alert-alert h3:first-child').text).to include("Manager created")
+    puts "Manager created"
+    @browser.navigate.refresh
     puts "Displaying a manager"
   end
 
@@ -64,8 +66,8 @@ describe "Should success login" do
     expect(@browser.find_element(css: '.alert-alert h3:first-child').text).to include("Manager updated")
     puts "Manager edited"
     sleep(2)
-  @browser.quit
-  puts "Finished test"
+    @browser.quit
+    puts "Finished test"
   end
 
 end

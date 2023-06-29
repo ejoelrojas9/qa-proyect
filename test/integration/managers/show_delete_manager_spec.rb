@@ -21,10 +21,23 @@ describe "Should success login" do
     expect(@browser.find_element(css: '.header-section').text).to include("Quality Assurence Page")
     $wait.until{@browser.find_element(link_text: 'Manager List').displayed?}
     @browser.find_element(link_text: 'Manager List').click
-    $wait.until{@browser.find_element(css: 'table tbody').displayed?}
+    $wait.until{@browser.find_element(css: 'button.btn-success').displayed?}
     puts "Displayed Managers list"
+    $wait.until{@browser.find_element(css: 'table tbody').displayed?}
     tbody_label = (@browser.find_element(css: 'table tbody').text).to_s
-    if tbody_label == ""
+    if tbody_label != ""
+      puts "Displaying a manager"
+      @browser.find_element(css: 'tr:first-child td a:last-child').click
+      $wait.until{@browser.find_element(css: '.header-section h3').displayed?}
+      expect(@browser.find_element(css: '.header-section h3').text).to include("Access de information of the manager")
+      @browser.navigate().refresh()
+      @browser.find_element(link_text: 'Delete').click
+      delete = @browser.switch_to.alert
+      delete.accept
+      $wait.until{@browser.find_element(css: '.alert-alert h3.bg-danger').displayed?}
+      expect(@browser.find_element(css: '.alert-alert h3.bg-danger').text).to include("Manager deleted")
+      puts "Manager deleted"
+    else
       puts "Creating a new manager"
       @browser.find_element(css: '.btn.btn-success').click
       $wait.until{@browser.find_element(css: '.modal-content').displayed?}
@@ -51,19 +64,8 @@ describe "Should success login" do
       @browser.find_element(link_text: 'Delete').click
       delete = @browser.switch_to.alert
       delete.accept
-      $wait.until{@browser.find_element(css: '.alert-alert h3:last-child').displayed?}
-      expect(@browser.find_element(css: '.alert-alert h3:last-child').text).to include("Manager deleted")
-    else
-      puts "Displaying a manager"
-      @browser.find_element(css: 'tr:last-child td a:last-child').click
-      $wait.until{@browser.find_element(css: '.header-section h3').displayed?}
-      expect(@browser.find_element(css: '.header-section h3').text).to include("Access de information of the manager")
-      @browser.navigate().refresh()
-      @browser.find_element(link_text: 'Delete').click
-      delete = @browser.switch_to.alert
-      delete.accept
-      $wait.until{@browser.find_element(css: '.alert-alert h3:last-child').displayed?}
-      expect(@browser.find_element(css: '.alert-alert h3:last-child').text).to include("Manager deleted")
+      $wait.until{@browser.find_element(css: '.alert-alert h3.bg-danger').displayed?}
+      expect(@browser.find_element(css: '.alert-alert h3.bg-danger').text).to include("Manager deleted")
     end
     sleep(2)
     @browser.quit

@@ -32,7 +32,7 @@
             <td>
               <%= manager.email %>
             </td>
-            <td><a href="<%= manager_path(id: manager.id)%>" class="btn btn-info">Details</a></td>
+            <td><%= link_to "Details", manager_path(manager.id), class: 'btn btn-info' %></td>
           </tr>
           <% end %>
       </tbody>
