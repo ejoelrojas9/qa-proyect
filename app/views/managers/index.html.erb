@@ -1,93 +1,99 @@
-<div class="container bg-light">
-  <div class="content-header mt-5 p-5">
-    <div class="alert-alert"><%= render '/shared/flash' %></div>
-    <% if current_admin.present? %>
-      <a href="<%= root_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Home</a>
-      <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a>
-    <% end %>
-    <div class="header-section mt-3 p-3">
-      <h1>Access de information of the managers</h1>
-      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">New manager</button>
+<%= turbo_frame_tag 'managers_controllers' do %>
+  <div class="container bg-light">
+    <div class="content-header mt-5 p-5">
+      <div class="alert-alert"><%= render '/shared/flash' %></div>
+      <% if current_admin.present? %>
+        <a href="<%= root_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Home</a>
+        <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a>
+      <% end %>
+      <div class="header-section mt-3 p-3">
+        <h1>Access de information of the managers</h1>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">New manager</button>
+      </div>
     </div>
-  </div>
-  <div class="block full block-all-noboder table-responsive-form-control p-5">
-    <table class="table data-table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @managers.each do |manager| %>
-          <tr class="p-3">
-            <td>
-              <%= manager.id %>
-            </td>
-            <td>
-              <%= manager.name %>
-            </td>
-            <td>
-              <%= manager.email %>
-            </td>
-            <td><%= link_to "Details", manager_path(manager.id), class: 'btn btn-info' %></td>
+    <div class="block full block-all-noboder table-responsive-form-control p-5">
+      <table class="table data-table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Details</th>
           </tr>
-          <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @managers.each do |manager| %>
+            <tr class="p-3">
+              <td>
+                <%= manager.id %>
+              </td>
+              <td>
+                <%= manager.name %>
+              </td>
+              <td>
+                <%= manager.email %>
+              </td>
+              <td>
+                <%= link_to manager_path(manager.id), class: 'btn btn-info' do %>
+                  Details
+                <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
-<div id="modal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Manager Form</h2>
-        <button data-bs-dismiss="modal" class="btn-close"></button>
-      </div>
-      <div class="modal-body">
-        <legend> <i class="bi bi-person-plus-fill"></i> New manager</legend>
-        <%= form_for :manager, model: @manager do |f| -%>
-          <table class="table table-responsive">
-            <tr class="mb-3">
-              <td><%= f.label :first_name -%> *</td>
-              <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
-            </tr>
-            <tr class="mb-3">
-              <td><%= f.label :last_name -%> *</td>
-              <td><%= f.text_field :last_name, required: true, class: 'form-control' -%></td>
-            </tr>
-            <tr class="mb-3">
-              <td><%= f.label :email -%> *</td>
-              <td><%= f.text_field :email, required: true, class: 'form-control' -%></td>
-            </tr>
-            <tr class="mb-3">
-              <td><%= f.label :phone -%> *</td>
-              <td><%= f.text_field :phone, required: true, class: 'form-control' -%></td>
-            </tr>
-            <tr class="mb-3">
-              <td><%= f.label :city -%> *</td>
-              <td><%= f.text_field :city, required: true, class: 'form-control' -%></td>
-            </tr>
-            <tr class="mb-3">
-              <td><%= f.label :age -%> *</td>
-              <td><%= f.text_field :age, required: true, class: 'form-control' -%></td>
-            </tr>
-            <div>
-              <td><%= f.label :notes -%> *</td>
-              <td><%= f.text_area :notes, required: true, class: 'form-control' -%></td>
+  <div id="modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Manager Form</h2>
+          <button data-bs-dismiss="modal" class="btn-close"></button>
+        </div>
+        <div class="modal-body">
+          <legend> <i class="bi bi-person-plus-fill"></i> New manager</legend>
+          <%= form_for :manager, model: @manager do |f| -%>
+            <table class="table table-responsive">
+              <tr class="mb-3">
+                <td><%= f.label :first_name -%> *</td>
+                <td><%= f.text_field :first_name, required: true, class: 'form-control' -%></td>
+              </tr>
+              <tr class="mb-3">
+                <td><%= f.label :last_name -%> *</td>
+                <td><%= f.text_field :last_name, required: true, class: 'form-control' -%></td>
+              </tr>
+              <tr class="mb-3">
+                <td><%= f.label :email -%> *</td>
+                <td><%= f.text_field :email, required: true, class: 'form-control' -%></td>
+              </tr>
+              <tr class="mb-3">
+                <td><%= f.label :phone -%> *</td>
+                <td><%= f.text_field :phone, required: true, class: 'form-control' -%></td>
+              </tr>
+              <tr class="mb-3">
+                <td><%= f.label :city -%> *</td>
+                <td><%= f.text_field :city, required: true, class: 'form-control' -%></td>
+              </tr>
+              <tr class="mb-3">
+                <td><%= f.label :age -%> *</td>
+                <td><%= f.text_field :age, required: true, class: 'form-control' -%></td>
+              </tr>
+              <div>
+                <td><%= f.label :notes -%> *</td>
+                <td><%= f.text_area :notes, required: true, class: 'form-control' -%></td>
+              </div>
+            </table>
+            <div class="modal-footer p-3">
+              <div class="container text-end">
+                <button data-bs-dismiss="modal" class="btn btn-outline-danger">Close</button>
+                <button type="submit" class="btn btn-outline-primary">Save changes</button>
+              </div>
             </div>
-          </table>
-          <div class="modal-footer p-3">
-            <div class="container text-end">
-              <button data-bs-dismiss="modal" class="btn btn-outline-danger">Close</button>
-              <button type="submit" class="btn btn-outline-primary">Save changes</button>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -29,9 +29,14 @@ class ManagersController < ApplicationController
 
   def update
     if @manager.update manager_params
-      redirect_to manager_path(@manager), notice: "Manager updated"
+      respond_to do |format|
+        # format.html { redirect_to manager_path(@manager), notice: "Manager updated" }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace( "manager_show", partial: 'managers/show', locals: { manager: @manager } ) }
+        # format.turbo_stream { render turbo_stream: turbo_stream.append( 'rooms',                   partial: 'shared/room',   locals: { room: @room } ) }
+      end
     else
-      flash[:alert] = @manager.errors.full_messages.join(',')
+      format.html { render :edit }
+      # flash[:alert] = @manager.errors.full_messages.join(',')
     end
   end
 
