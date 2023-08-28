@@ -1,6 +1,6 @@
 <div class="container bg-light">
   <div class="content-header mt-5 p-5">
-  <div><%= render '/shared/flash' %></div>
+    <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <a href="<%= root_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Home</a>
       <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a>
@@ -9,34 +9,34 @@
       <h1>Access de information of the managers</h1>
       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">New manager</button>
     </div>
-    <div class="block full block-all-noboder table-responsive-form-control mt-5">
-      <table class="table data-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Details</th>
+  </div>
+  <div class="block full block-all-noboder table-responsive-form-control p-5">
+    <table class="table data-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @managers.each do |manager| %>
+          <tr class="p-3">
+            <td>
+              <%= manager.id %>
+            </td>
+            <td>
+              <%= manager.name %>
+            </td>
+            <td>
+              <%= manager.email %>
+            </td>
+            <td><%= link_to "Details", manager_path(manager.id), class: 'btn btn-info' %></td>
           </tr>
-        </thead>
-        <tbody>
-          <% @managers.each do |manager| %>
-            <tr class="p-3">
-              <td>
-                <%= manager.id %>
-              </td>
-              <td>
-                <%= manager.name %>
-              </td>
-              <td>
-                <%= manager.email %>
-              </td>
-              <td><a href="<%= manager_path(id: manager.id)%>" class="btn btn-info">Details</a></td>
-            </tr>
-            <% end %>
-        </tbody>
-      </table>
-    </div>
+          <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

@@ -1,7 +1,7 @@
 
 <div class="container bg-light">
   <div class="content-header mt-5 p-5">
-    <div><%= render '/shared/flash' %></div>
+    <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <%= link_to "Home", root_path %>
       <a href="<%= managers_path -%>" class="p-3" onclick=><i class="fa fa-ban fa-fw pull-right"></i>Managers List</a>
@@ -10,10 +10,12 @@
     <div class="container mt-3 p-3">
     <a type="button" data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-outline-success p-2"></i>Settings</a>
     </div>
-    <div class="header-section mt-3 p-3">
+    <div class="header-section mx-3">
       <h3>Access de information of the manager: <%= @manager.name %></h3>
     </div>
-    <div class="tab-content mt-3 p-3">
+  </div>
+  <div class="block full block-alt-noborder mx-5">
+    <div class="tab-content">
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-11">

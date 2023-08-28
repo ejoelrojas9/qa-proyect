@@ -2,7 +2,7 @@ class ManagersController < ApplicationController
   before_action :set_manager, only: %i[show edit update destroy]
 
   def index
-    @managers = Manager.all
+    @managers = Manager.all.order(id: 'asc')
   end
 
   def show
