@@ -34,8 +34,8 @@ describe "Should success login" do
       @browser.find_element(link_text: 'Delete').click
       delete = @browser.switch_to.alert
       delete.accept
-      $wait.until{@browser.find_element(css: '.alert-alert h3.bg-danger').displayed?}
-      expect(@browser.find_element(css: '.alert-alert h3.bg-danger').text).to include("Manager deleted")
+      $wait.until{@browser.find_element(css: 'div.alert-alert h3.bg-danger').displayed?}
+      expect(@browser.find_element(css: 'div.alert-alert h3.bg-danger').text).to include("Manager deleted")
       puts "Manager deleted"
     else
       puts "Creating a new manager"
@@ -64,8 +64,8 @@ describe "Should success login" do
       @browser.find_element(link_text: 'Delete').click
       delete = @browser.switch_to.alert
       delete.accept
-      $wait.until{@browser.find_element(css: '.alert-alert h3.bg-danger').displayed?}
-      expect(@browser.find_element(css: '.alert-alert h3.bg-danger').text).to include("Manager deleted")
+      $wait.until{@browser.find_element(css: 'div.alert-alert h3.bg-danger').displayed?}
+      expect(@browser.find_element(css: 'div.alert-alert h3.bg-danger').text).to include("Manager deleted")
     end
     sleep(2)
     @browser.quit
