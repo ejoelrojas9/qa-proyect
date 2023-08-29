@@ -3,6 +3,12 @@ class ManagersController < ApplicationController
 
   def index
     @managers = Manager.all.order(id: 'asc')
+    if params[:first_name].present?
+      @managers = @managers.search_full_text( params[:first_name])
+    end
+    if params[:age].present?
+      @managers = @managers.search_full_text( params[:age])
+    end
   end
 
   def show

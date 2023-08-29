@@ -1,5 +1,5 @@
 <div class="container bg-light">
-  <div class="content-header mt-5 p-5">
+  <div class="content-header p-5">
     <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <a href="<%= root_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Home</a>
@@ -10,8 +10,23 @@
       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">New manager</button>
     </div>
   </div>
-  <div class="block full block-all-noboder table-responsive-form-control p-5">
-    <table class="table data-table">
+
+  <div class="block full block-all-noboder table-responsive-form-control mx-5">
+    <%=  form_with url: managers_path, method: :get do |f| %>
+      <tr>
+        <td>
+          <%= f.text_field :first_name, placeholder: 'Write you search',
+          onChange: 'this.form.requestSubmit()', value: params[:first_name] %>
+        </td>
+
+        <td>
+          <%= f.select :age, options_for_select(Manager.all.order('age asc').map{ |a| a.age }),
+          {include_blank: 'Select one age of the list'},
+          onChange: 'this.form.requestSubmit()', value: params[:age] %>
+        </td>
+      <tr>
+    <% end %>
+    <table class="table data-table mt-4">
       <thead>
         <tr>
           <th>Id</th>
