@@ -19,5 +19,5 @@ module Admins
   #   # def log_out_failure
   #   #   render json: { message: "Logged out failure."}, status: :unauthorized
   #   # end
-  # end
+  end
 end

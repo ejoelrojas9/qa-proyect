@@ -1,8 +1,13 @@
 class ManagersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_manager, only: %i[show edit update destroy]
 
   def index
     @managers = Manager.all.order(id: 'asc')
+    respond_to do |format|
+      format.html
+      format.json { render :json => @managers }
+    end
   end
 
   def show
