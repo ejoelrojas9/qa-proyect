@@ -20,4 +20,5 @@ module Admins
   #   #   render json: { message: "Logged out failure."}, status: :unauthorized
   #   # end
   # end
+  end
 end
