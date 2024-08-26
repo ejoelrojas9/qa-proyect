@@ -1,16 +1,17 @@
 require 'webdrivers/chromedriver'
-espera = Selenium::WebDriver::Wait.new(timeout: 15)
+require_relative ('../login_info.rb')
 
-describe 'Login exitoso' do
-  it "deberia hacer login" do
-    explorer = Selenium::WebDriver.for :chrome
-    explorer.navigate.to ("http://localhost:3000/admins/sign_in")
-    explorer.find_element(id: 'admin_email').send_keys("test@example.com")
-    explorer.find_element(id: 'admin_password').send_keys("test0102.")
-    explorer.find_element(name: 'commit').click
-    espera.until{explorer.find_element(xpath: '/html/body/div/div/div[1]/h3[1]').displayed?}
-    expect(explorer.find_element(xpath: '/html/body/div/div/div[1]/h3[1]').text).to include("Signed in successfully.")  
-    explorer.quit
-    puts "Test finalizado"
+describe 'Login successfully' do
+  it "Should do login" do
+    @browser = Selenium::WebDriver.for :chrome
+    @browser.manage.window.maximize
+    @browser.navigate.to ($url)
+    @browser.find_element(id: 'admin_email').send_keys($email)
+    @browser.find_element(id: 'admin_password').send_keys($password)
+    @browser.find_element(name: 'commit').click
+    $wait.until{@browser.find_element(css: '.alert-alert').displayed?}
+    expect(@browser.find_element(css: '.alert-alert').text).to include($success_login_message)
+    @browser.quit
+    puts "Login successfully"
   end
 end
