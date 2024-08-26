@@ -1,5 +1,4 @@
 require 'webdrivers/chromedriver'
-require 'byebug'
 require_relative ('../login_info.rb')
 
 describe "Should success login" do
