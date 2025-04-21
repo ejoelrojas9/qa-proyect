@@ -8,7 +8,7 @@
       <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a>
     <% end %>
     <div class="container mt-3 p-3">
-    <a type="button" data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-outline-success p-2"></i>Settings</a>
+    <a type="button" data-bs-toggle="modal" data-bs-target="#show-modal" class="btn btn-outline-success p-2" id="show-modal-button"></i>Settings</a>
     </div>
     <div class="header-section mx-3">
       <h3>Access de information of the manager: <%= @manager.name %></h3>
@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<div id="modal" class="modal fade">
+<div id="show-modal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -105,3 +105,9 @@
     </div>
   </div>
 </div>
+
+<% content_for :footer_scripts do -%>
+
+  <%= javascript_include_tag "tribute_init", "data-turbo-track" => "reload" %>
+
+<% end %>
