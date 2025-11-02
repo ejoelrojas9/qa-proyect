@@ -106,8 +106,6 @@
   </div>
 </div>
 
-<% content_for :footer_scripts do -%>
+<script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
 
-  <%= javascript_include_tag "tribute_init", "data-turbo-track" => "reload" %>
-
-<% end %>
+<%= javascript_include_tag "tribute_init", "data-turbo-track" => "reload" %>
