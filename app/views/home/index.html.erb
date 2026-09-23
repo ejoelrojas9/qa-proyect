@@ -3,10 +3,33 @@
     <div class="alert-alert"><%= render '/shared/flash' %></div>
     <% if current_admin.present? %>
       <%= link_to "Manager List", managers_path %>
+      <ul class="nav navbar-nav-custom pull-right">
+        <% if Rails.env.development? %>
+          <li>
+            <div class="language-selector" style="text-align: right; margin: 0.1rem;">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><%= t('.available_languajes') %>
+                    <i class="fa fa-angle-down"></i>
+                  </a>
+                    <ul class="dropdown-menu">
+                      <li class="<%= 'active' if params[:locale] == 'en' -%>"><%= link_to "🇺🇸 #{t('.english')}", url_for(locale: :en), class: "btn btn-link" if !params[:keypad_id] %></li>
+                      <li class="<%= 'active' if params[:locale] == 'es' -%>"><%= link_to "🇪🇸 #{t('.spanish')}", url_for(locale: :es), class: "btn btn-link" if !params[:keypad_id] %></li>
+                      <li class="<%= 'active' if params[:locale] == 'fr' -%>"><%= link_to "🇫🇷 #{t('.french')}", url_for(locale: :fr), class: "btn btn-link" if !params[:keypad_id] %></li>
+                      <li class="<%= 'active' if params[:locale] == 'en' -%>"><%= link_to "🇺🇸 #{t('.english')}", url_for(locale: :en, keypad_id: params[:keypad_id]), class: "btn btn-link" if params[:keypad_id] %></li>
+                      <li class="<%= 'active' if params[:locale] == 'es' -%>"><%= link_to "🇪🇸 #{t('.spanish')}", url_for(locale: :es, keypad_id: params[:keypad_id]), class: "btn btn-link" if params[:keypad_id] %></li>
+                      <li class="<%= 'active' if params[:locale] == 'fr' -%>"><%= link_to "🇫🇷 #{t('.french')}", url_for(locale: :fr, keypad_id: params[:keypad_id]), class: "btn btn-link" if params[:keypad_id] %></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      <% end %>
       <a href="<%= destroy_admin_session_path -%>" class="p-3"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
     <% end %>
     <div class="header-section mt-3 p-3">
-      <h1>Quality Assurence Page</h1>
+      <h1><%= t('.h1') %></h1>
     </div>
   </div>
 </div>
